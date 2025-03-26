@@ -3,6 +3,8 @@ import LandingPage from "./Pages/LandingPage.jsx";
 import Signup from "./Pages/Signup.jsx";
 import Login from "./Pages/Login.jsx";
 import Voterpage from "./Pages/Voterpage";
+import FaceRegistration from "./facecapture/Face_registration.jsx";
+import FaceVerification from "./facecapture/Face_verification.jsx";
 function App() {
   return (
     <>
@@ -11,7 +13,9 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/Voterpage" element={<Voterpage />} />{" "}
+          <Route path="/Voterpage" element={<Voterpage />} />
+          <Route path="/registration" element={<FaceRegistration />} />
+          <Route path="/verification" element={<FaceVerification />} />
         </Routes>
       </Router>
     </>
