@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Voterpage.css";
-
+import dotenv from "dotenv";
+dotenv.config();
 function Voterpage() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
