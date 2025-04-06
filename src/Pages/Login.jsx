@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import "../styles/Login.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-const PORT = process.env.PORT || 5000;
+import dotenv from "dotenv";
+dotenv.config();
+
 const Login = () => {
+const PORT = process.env.PORT || 5000;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
