@@ -40,6 +40,17 @@ const connectDB = async () => {
 };
 connectDB();
 
+// Routes
+app.get('/', (req, res) => {
+  res.send('Welcome to DigiVote!');
+});
+
+// For React/Vue/Angular frontend
+app.use(express.static('src/build'));
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'src', 'build', 'index.html'));
+});
+
 // Employee Routes
 app.post("/register", async (req, res) => {
   try {
