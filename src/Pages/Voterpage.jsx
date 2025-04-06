@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Voterpage.css";
-import dotenv from "dotenv";
-dotenv.config();
+
 function Voterpage() {
-  const PORT = process.env.PORT || 5000;
+
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     epicNumber: "",
@@ -29,7 +28,7 @@ function Voterpage() {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:{PORT}/api/register", {
+      const response = await fetch("http://localhost:10000/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
