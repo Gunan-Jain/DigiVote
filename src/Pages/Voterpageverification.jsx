@@ -9,7 +9,7 @@ function Voterpageverification() {
   const [step, setStep] = useState(1); // 1: EPIC & Phone, 2: OTP, 3: Result
   const [isVerified, setIsVerified] = useState(false);
   const [error, setError] = useState("");
-
+const PORT = process.env.PORT || 5000;
   const handleSubmitDetails = async (e) => {
     e.preventDefault();
     if (!epicNumber || !phoneNumber) {
@@ -22,7 +22,7 @@ function Voterpageverification() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/check-voter", {
+      const response = await fetch("http://localhost:{PORT]/api/check-voter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
