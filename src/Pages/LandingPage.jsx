@@ -11,7 +11,7 @@ import {
   FaPhoneAlt,
   FaMapMarkerAlt,
 } from "react-icons/fa";
-import "../styles/LandingPage.css";
+import "../styles/Landingpage.css";
 import { FaShieldAlt, FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 export default function LandingPage() {
