@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/Login.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
+const PORT = process.env.PORT || 5000;
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -42,7 +42,7 @@ const Login = () => {
     e.preventDefault();
     console.log("Login Data:", formData);
     axios
-      .post("http://localhost:5009/login", formData)
+      .post("http://localhost:{PORT}/login", formData)
       .then((result) => {
         console.log(result);
         if (result.data === "Success") {
@@ -89,7 +89,7 @@ const Login = () => {
           background="transparent"
           speed="1"
           style={{ width: "300px", height: "300px" }}
-          loop={true}
+          loop={1}
           autoplay
         ></dotlottie-player>
       </div>
