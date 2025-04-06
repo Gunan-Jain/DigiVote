@@ -28,10 +28,7 @@ const connectDB = async () => {
       throw new Error("MONGODB_URI is not defined in .env file");
     }
 
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+ await mongoose.connect(process.env.MONGODB_URI);
     console.log("MongoDB Connected");
   } catch (error) {
     console.error("MongoDB Connection Failed:", error.message);
@@ -45,10 +42,11 @@ app.get('/', (req, res) => {
   res.send('Welcome to DigiVote!');
 });
 
+
 // For React/Vue/Angular frontend
-app.use(express.static('src/build'));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'src', 'build', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
 
 // Employee Routes
