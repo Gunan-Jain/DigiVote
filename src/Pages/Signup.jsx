@@ -2,11 +2,10 @@ import { useEffect, useState } from "react";
 import "../styles/Signup.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import dotenv from "dotenv";
-dotenv.config();
+
 
 const Signup = () => {
-const PORT = process.env.PORT || 5000;
+
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
@@ -30,7 +29,7 @@ const PORT = process.env.PORT || 5000;
     e.preventDefault();
 
     axios
-      .post("http://localhost:{PORT}/register", formData)
+      .post("http://localhost:10000/register", formData)
       .then((result) => {
         console.log(result);
         navigate("/login");
