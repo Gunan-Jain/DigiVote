@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Voterpageverification.css";
-import dotenv from "dotenv";
-dotenv.config();
+
 function Voterpageverification() {
   const [epicNumber, setEpicNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -9,7 +8,7 @@ function Voterpageverification() {
   const [step, setStep] = useState(1); // 1: EPIC & Phone, 2: OTP, 3: Result
   const [isVerified, setIsVerified] = useState(false);
   const [error, setError] = useState("");
-const PORT = process.env.PORT || 5000;
+
   const handleSubmitDetails = async (e) => {
     e.preventDefault();
     if (!epicNumber || !phoneNumber) {
@@ -22,7 +21,7 @@ const PORT = process.env.PORT || 5000;
     }
 
     try {
-      const response = await fetch("http://localhost:{PORT]/api/check-voter", {
+      const response = await fetch("http://localhost:10000/api/check-voter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
