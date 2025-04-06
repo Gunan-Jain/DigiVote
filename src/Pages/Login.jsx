@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import "../styles/Login.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import dotenv from "dotenv";
-dotenv.config();
+
 
 const Login = () => {
-const PORT = process.env.PORT || 5000;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -45,7 +43,7 @@ const PORT = process.env.PORT || 5000;
     e.preventDefault();
     console.log("Login Data:", formData);
     axios
-      .post("http://localhost:{PORT}/login", formData)
+      .post("http://localhost:10000/login", formData)
       .then((result) => {
         console.log(result);
         if (result.data === "Success") {
@@ -92,7 +90,7 @@ const PORT = process.env.PORT || 5000;
           background="transparent"
           speed="1"
           style={{ width: "300px", height: "300px" }}
-          loop={1}
+          loop={true}
           autoplay
         ></dotlottie-player>
       </div>
