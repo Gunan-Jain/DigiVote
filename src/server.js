@@ -45,16 +45,13 @@ const connectDB = async () => {
 connectDB();
 
 // Routes
-app.get('/', (req, res) => {
-  res.send('Welcome to DigiVote!');
-});
-
-
-// For React/Vue/Angular frontend
 app.use(express.static(path.join(__dirname, '..', 'dist')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
+app.get('/', (req, res) => {
+ 
+   res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'));
 });
+
+
 
 // Employee Routes
 app.post("/register", async (req, res) => {
