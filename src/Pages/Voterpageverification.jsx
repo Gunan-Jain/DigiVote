@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/Voterpageverification.css";
-
+import dotenv from "dotenv";
+dotenv.config();
 function Voterpageverification() {
   const [epicNumber, setEpicNumber] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
