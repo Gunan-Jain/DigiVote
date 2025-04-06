@@ -2,15 +2,13 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import EmployeeModel from "./models/employee.js"; // Add .js extension for ES module
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5009;
 
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+
 mongoose.connect(
   "mongodb+srv://gunanjain809:v413ySsA1Iw9kw7h@cluster0.wfmhx.mongodb.net/"
 );
@@ -42,6 +40,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.listen(5009, () => {
-  console.log("server is running on port 5009");
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${PORT}`);
 });
