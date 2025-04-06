@@ -1,43 +1,69 @@
-import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
-import cors from "cors"; // Import CORS
+import cors from "cors";
+import dotenv from "dotenv";
+import EmployeeModel from "./models/employee.js";
 
+// Load environment variables
+dotenv.config();
+
+// Create Express app
 const app = express();
 
-// Enable CORS for all origins (Temporary Fix)
-app.use(cors());
-
-// OR (Recommended) Allow only your frontend origin
+// Configure middleware
+app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow only frontend origin
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization",
   })
 );
 
-app.use(express.json()); // Parse JSON requests
-
-// MongoDB Connection
+// Database Connection
+// Database Connection
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://gunanjain809:v413ySsA1Iw9kw7h@cluster0.wfmhx.mongodb.net/",
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      }
-    );
+    if (!process.env.MONGODB_URI) {
+      throw new Error("MONGODB_URI is not defined in .env file");
+    }
+
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
     console.log("MongoDB Connected");
   } catch (error) {
-    console.error("MongoDB Connection Failed:", error);
+    console.error("MongoDB Connection Failed:", error.message);
     process.exit(1);
   }
 };
 connectDB();
 
-// User Schema
+// Employee Routes
+app.post("/register", async (req, res) => {
+  try {
+    const employees = await EmployeeModel.create(req.body);
+    res.json(employees);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await EmployeeModel.findOne({ email });
+    if (!user) return res.status(404).json("No record exists");
+    if (user.password !== password)
+      return res.status(401).json("Incorrect password");
+    res.json("Success");
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// User Schema and Model
 const UserSchema = new mongoose.Schema({
   epicNumber: { type: String, required: true, unique: true },
   fullName: { type: String, required: true },
@@ -50,7 +76,7 @@ const UserSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", UserSchema);
 
-// Registration Route
+// User Routes
 app.post("/api/register", async (req, res) => {
   try {
     const {
@@ -63,12 +89,10 @@ app.post("/api/register", async (req, res) => {
       state,
     } = req.body;
 
-    // Check if user already exists
     const existingUser = await User.findOne({ epicNumber });
     if (existingUser)
       return res.status(400).json({ message: "User already registered" });
 
-    // Create new user
     const newUser = new User({
       epicNumber,
       fullName,
@@ -84,51 +108,43 @@ app.post("/api/register", async (req, res) => {
       .status(201)
       .json({ message: "User registered successfully", user: newUser });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 });
 
-// Verification Route
 app.post("/api/verify", async (req, res) => {
   try {
     const { epicNumber, fullName, dateOfBirth } = req.body;
-
-    // Find user
     const user = await User.findOne({ epicNumber, fullName, dateOfBirth });
+
     if (!user)
       return res
         .status(404)
         .json({ message: "Verification failed. User not found." });
 
-    // Mark user as verified
     user.isVerified = true;
     await user.save();
-
     res.status(200).json({ message: "User verified successfully", user });
   } catch (error) {
-    res.status(500).json({ message: "Server error", error });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 });
 
 app.post("/api/check-voter", async (req, res) => {
   try {
     const { epicNumber, phoneNumber } = req.body;
-
     const user = await User.findOne({ epicNumber, phoneNumber });
-    if (!user) {
-      return res
-        .status(404)
-        .json({ message: "Voter not found. Please check your details." });
-    }
+
+    if (!user) return res.status(404).json({ message: "Voter not found" });
 
     res.status(200).json({ message: "Voter found" });
   } catch (error) {
-    console.error("Error checking voter:", error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 });
 
+// Start Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
