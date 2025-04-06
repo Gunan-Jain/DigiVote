@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import * as faceapi from "face-api.js";
 import { useNavigate } from "react-router-dom";
+import "../styles/Faceverification.css";
 
 const CLOUDINARY_CLOUD_NAME = "dnpaktlwa";
 const UPLOAD_PRESET = "face_upload";
@@ -57,7 +58,7 @@ const Faceverification = () => {
 
         if (match >= 0.8) {
           setMessage("Verification successful! Redirecting...");
-          setTimeout(() => navigate("/login"), 2000);
+          setTimeout(() => navigate("/Voterverification"), 2000);
         } else {
           setMessage("Face does not match! Try again.");
         }
@@ -90,15 +91,20 @@ const Faceverification = () => {
   };
 
   return (
-    <div>
-      <h2>Verification</h2>
-      <video
-        ref={videoRef}
-        autoPlay
-        style={{ width: "300px", height: "200px" }}
-      />
-      <button onClick={captureAndVerify}>Verify Face</button>
-      {message && <p>{message}</p>}
+    <div className="verification-container">
+      <div className="verification">
+        <h2>Verification</h2>
+        <video
+          ref={videoRef}
+          autoPlay
+          style={{ width: "600px", height: "600px" }}
+          className="verifiction-video"
+        />
+        <button className="verification-button" onClick={captureAndVerify}>
+          Verify Face
+        </button>
+        {message && <p>{message}</p>}
+      </div>
     </div>
   );
 };

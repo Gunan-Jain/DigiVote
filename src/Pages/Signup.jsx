@@ -102,8 +102,7 @@ const Signup = () => {
             <input type="date" placeholder="Date of Birth" required />
             <button type="submit">Sign Up</button>
             <p className="login-text">
-              Want to cast your vote?{" "}
-              <Link to="/Voterpage">Register as a Voter</Link>
+              Already have Account? <Link to="/login">Login Here</Link>
             </p>
           </form>
         </div>

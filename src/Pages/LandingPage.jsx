@@ -89,9 +89,9 @@ export default function LandingPage() {
           >
             Learn More
           </button>
-          <a href="/vote" className="btn white">
+          <Link to={"/verification"} className="btn white">
             Vote Now
-          </a>
+          </Link>
         </div>
       </section>
 

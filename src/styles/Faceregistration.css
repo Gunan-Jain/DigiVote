@@ -1,0 +1,62 @@
+.registration-box{    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    min-width: 100vw;
+    background: url('./assets/voter_bg.png') no-repeat center center fixed;
+    background-size: cover;
+  }
+  
+  .registration-container {
+    background: rgba(20, 40, 80, 0.9);
+    border-radius: 25px;
+    width: 650px;               /* increased from 450px */
+    max-width: 95%;
+    padding: 40px;              /* increased from 30px */
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.3);
+    color: #ffffff;
+  }
+  
+  .registration-container h2 {
+    text-align: center;
+    font-size: 34px;            /* increased from 28px */
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+  
+  video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;        /* more rounded */
+    margin-bottom: 20px;
+    border: 3px solid #00cfff;  /* thicker border */
+  }
+  
+  button {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: #fff;
+    padding: 14px 28px;         /* larger button */
+    font-size: 18px;            /* increase text size */
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 65, 108, 0.7);
+    transition: background 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+  }
+  
+  img {
+    display: block;
+    width: 100%;                /* scale captured image to full width */
+    margin: 25px auto 0;
+    border-radius: 15px;
+    border: 3px solid #00cfff;
+  }
+  

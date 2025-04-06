@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/Faceregistration.css";
 
 const CLOUDINARY_CLOUD_NAME = "dnpaktlwa";
 const UPLOAD_PRESET = "face_upload";
@@ -41,6 +42,11 @@ const Faceregistration = () => {
         localStorage.setItem("storedImageUrl", response.data.secure_url);
 
         console.log("Uploaded Image URL:", response.data.secure_url);
+
+        setTimeout(() => {
+          alert("Face Registered");
+          window.location.href = "/voterpage";
+        }, 3000); // 3000 ms = 3 seconds
       } catch (error) {
         console.error("Upload Error:", error);
       }
@@ -48,17 +54,19 @@ const Faceregistration = () => {
   };
 
   return (
-    <div>
-      <h2>Registration</h2>
-      <video
-        ref={videoRef}
-        autoPlay
-        style={{ width: "300px", height: "200px" }}
-      />
-      <button onClick={captureImage}>Capture & Upload</button>
-      {imageUrl && (
-        <img src={imageUrl} alt="Captured" style={{ width: "200px" }} />
-      )}
+    <div className="registration-box">
+      <div className="registration-container">
+        <h2>Registration</h2>
+        <video
+          ref={videoRef}
+          autoPlay
+          style={{ width: "400px", height: "400px" }}
+        />
+        <button onClick={captureImage}>Capture & Upload</button>
+        {imageUrl && (
+          <img src={imageUrl} alt="Captured" style={{ width: "200px" }} />
+        )}
+      </div>
     </div>
   );
 };

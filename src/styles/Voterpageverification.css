@@ -1,0 +1,416 @@
+/* Voterpageverification.css */
+/* Scoped styles only for voter verification component */
+
+.verification-page-container {
+    background: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150462053.jpg');
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .voter-verification-container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    color: #333;
+  }
+  
+  /* Header Section */
+  header {
+    background: #1a3c86;
+    padding: 1.5rem;
+    text-align: center;
+    color: white;
+  }
+  
+  header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+  
+  header p {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+  
+  /* Progress Steps */
+  .verification-steps {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: #f5f9ff;
+    position: relative;
+  }
+  
+  .verification-steps::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    right: 2rem;
+    height: 2px;
+    background: #d6e4ff;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  .step {
+    position: relative;
+    z-index: 2;
+    background: #e6f0ff;
+    color: #1a3c86;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .step.active {
+    background: #1a3c86;
+    color: white;
+    font-weight: 600;
+  }
+  
+  /* Form Container */
+  .verification-form-container {
+    padding: 2rem;
+  }
+  
+  /* Form Styles */
+  .verification-form h2 {
+    color: #1a365d;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    background: white;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s;
+  }
+  
+  .form-group input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .form-group input:focus {
+    outline: none;
+    border-color: #1a3c86;
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+  }
+  
+  /* Phone Input */
+  .phone-input-container {
+    display: flex;
+  }
+  
+  .country-code {
+    background: #f0f4ff;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    color: #333;
+  }
+  
+  .phone-input-container input {
+    border-radius: 0 6px 6px 0;
+  }
+  
+  .input-hint {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+  
+  /* Buttons */
+  .submit-button {
+    width: 100%;
+    padding: 0.75rem;
+    background: #1a3c86;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+  }
+  
+  .submit-button:hover {
+    background: #1a3c86;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.2);
+  }
+  
+  .resend-button {
+    background: transparent;
+    color: #1a3c86;
+    border: 1px solid #1a56db;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .resend-button:hover {
+    background: #f5f9ff;
+  }
+  
+  /* Verification Result */
+  .verification-result {
+    text-align: center;
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .result-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1.5rem;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .result-icon.success {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    animation: bounceIn 0.6s;
+  }
+  
+  .result-icon.failure {
+    background-color: #f44336;
+    color: white;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+    animation: shake 0.5s;
+  }
+  
+  @keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+  }
+  
+  .voter-details {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 400px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .voter-details p {
+    margin-bottom: 0.8rem;
+    text-align: left;
+  }
+  
+  .success-message {
+    color: #4CAF50;
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+  }
+  
+  .error-message {
+    color: #f44336;
+    margin: 1rem 0;
+  }
+  
+  .possible-reasons {
+    background: #fff5f5;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1.5rem auto;
+    max-width: 400px;
+    text-align: left;
+  }
+  
+  .possible-reasons h4 {
+    color: #f44336;
+    margin-bottom: 0.5rem;
+  }
+  
+  .possible-reasons ul {
+    padding-left: 1.5rem;
+  }
+  
+  .possible-reasons li {
+    margin-bottom: 0.3rem;
+  }
+  
+  .proceed-button {
+    background: #1a3c86;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .reset-button {
+    background: white;
+    color: #1a3c86;
+    border: 1px solid #1a3c86;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .reset-button:hover {
+    background: #f5f9ff;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    color: #6b7280;
+    font-size: 0.85rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .verification-steps {
+      padding: 1rem;
+    }
+    
+    .verification-steps::before {
+      left: 1rem;
+      right: 1rem;
+    }
+    
+    .verification-form-container {
+      padding: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .verification-page-container {
+      padding: 10px;
+      align-items: flex-start;
+    }
+    
+    .voter-verification-container {
+      border-radius: 8px;
+    }
+    
+    header h1 {
+      font-size: 1.5rem;
+    }
+    
+    .verification-steps {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+    
+    .verification-steps::before {
+      display: none;
+    }
+    
+    .step {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .phone-input-container {
+      flex-direction: column;
+    }
+    
+    .country-code {
+      border-radius: 6px 6px 0 0;
+      border-right: 1px solid #d1d5db;
+      border-bottom: none;
+      justify-content: center;
+    }
+    
+    .phone-input-container input {
+      border-radius: 0 0 6px 6px;
+    }
+    
+    .result-icon {
+      width: 80px;
+      height: 80px;
+      font-size: 2.5rem;
+    }
+    
+    .voter-details, .possible-reasons {
+      padding: 1rem;
+    }
+  }
+
+
+  .verification-page-container {
+    background: url('https://img.freepik.com/free-vector/gradient-connection-background_23-2150462053.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .verification-page-container {
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;     /* Vertical centering */
+  min-height: 100vh;       /* Full viewport height */
+  width: 100vw;
+}

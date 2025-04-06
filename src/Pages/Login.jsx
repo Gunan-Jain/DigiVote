@@ -46,7 +46,7 @@ const Login = () => {
       .then((result) => {
         console.log(result);
         if (result.data === "Success") {
-          navigate("/voterpage");
+          navigate("/registration");
         }
       })
       .catch((err) => console.log(err));

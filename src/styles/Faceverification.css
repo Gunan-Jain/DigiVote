@@ -1,0 +1,66 @@
+/* Faceverification.css */
+
+.verification-container {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../assets/voter_bg.png') no-repeat center center fixed;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-size: cover;
+  }
+  
+  .verification {
+    background: rgba(20, 40, 80, 0.9);
+    border-radius: 25px;
+    width: 650px;
+    max-width: 95%;
+    padding: 40px;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  h2 {
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+  
+  .verification-video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 3px solid #00cfff;
+  }
+  
+  .verification-button {
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    color: #fff;
+    padding: 14px 28px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 65, 108, 0.7);
+    transition: background 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background: linear-gradient(90deg, #ff4b2b, #ff416c);
+  }
+  
+  p {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
