@@ -1,8 +1,15 @@
+
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
++import path from "path"; // Add this import
+import { fileURLToPath } from 'url';
 import EmployeeModel from "./models/employee.js";
+
+// Fix __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config();
